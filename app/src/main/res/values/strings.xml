@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Task Reminder</string>
+    <string name="no_reminders">No reminders</string>
+    <string name="title">Название задачи</string>
+    <string name="body">Текст задачи</string>
+    <string name="date">Дата напоминания</string>
+    <string name="time">Время напоминания</string>
+    <string name="confirm">Сохранить</string>
+    <string name="menu_insert">Добавить задачу</string>
+    <string name="menu_delete">Удалить задачу</string>
+    <string name="task_saved_message">Задача сохранена</string>
+</resources>
