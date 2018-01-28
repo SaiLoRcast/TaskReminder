@@ -1,8 +1,10 @@
 package com.polygalov.taskreminder;
 
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.TimePickerDialog;
+import android.content.DialogInterface;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -108,10 +110,28 @@ public class ReminderEditActivity extends AppCompatActivity {
         mConfirmButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                saveState();
-                setResult(RESULT_OK);
-                Toast.makeText(ReminderEditActivity.this, getString(R.string.task_saved_message), Toast.LENGTH_SHORT).show();
-                finish();
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(ReminderEditActivity.this);
+                builder.setMessage("Сохранить задачу?")
+                        .setTitle("Подтвердить сохранение")
+                        .setCancelable(false)
+                        .setPositiveButton("Да", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                saveState();
+                                setResult(RESULT_OK);
+                                Toast.makeText(ReminderEditActivity.this, getString(R.string.task_saved_message), Toast.LENGTH_SHORT).show();
+                                finish();
+                            }
+                        }).setNegativeButton("Нет", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.cancel();
+                    }
+                });
+                builder.create().show();
+
+
             }
         });
 
