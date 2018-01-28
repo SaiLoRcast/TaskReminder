@@ -27,7 +27,7 @@ public class ReminderEditActivity extends AppCompatActivity {
     private static final int TIME_PICKER_DIALOG = 1;
     private static final String DATE_FORMAT = "yyyy-MM-dd";
     private static final String TIME_FORMAT = "kk:mm";
-    private static final String DATE_TIME_FORMAT = "yyyy-MM-dd kk:mm:ss";
+    public static final String DATE_TIME_FORMAT = "yyyy-MM-dd kk:mm:ss";
 
     private Button mDateButton;
     private Button mTimeButton;
@@ -218,6 +218,8 @@ public class ReminderEditActivity extends AppCompatActivity {
         } else {
             mDbHelper.updateReminder(mRowId, title, body, reminderDateTime);
         }
+
+        new ReminderManager(this).setReminder(mRowId, mCalendar);
     }
 
     private void updateTimeButtonText() {
